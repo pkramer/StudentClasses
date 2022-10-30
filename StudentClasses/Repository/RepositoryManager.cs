@@ -7,6 +7,7 @@ namespace StudentClasses.Repository
     {
         private RepositoryContext _repositoryContext;
         private ISubjectRepository? _subjectRepository;
+        private IStudentRepository? _studentRepository;
 
         public RepositoryManager(RepositoryContext repositoryContext)
         {
@@ -21,6 +22,17 @@ namespace StudentClasses.Repository
                     _subjectRepository = new SubjectRepository(_repositoryContext);
 
                 return _subjectRepository;
+            }
+        }
+
+        public IStudentRepository Student
+        {
+            get
+            {
+                if (_studentRepository == null)
+                    _studentRepository = new StudentRepository(_repositoryContext);
+
+                return _studentRepository;
             }
         }
 

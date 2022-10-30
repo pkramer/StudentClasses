@@ -12,6 +12,10 @@ namespace StudentClasses
                 .ForMember(c => c.FullDescription,
                     opt => opt.MapFrom(x => string.Join(' ', x.Description, x.City)));
 
+            CreateMap<Student, StudentDto>()
+                .ForMember(c => c.FullDescription,
+                    opt => opt.MapFrom(x => string.Join(' ', x.Age, x.Level)));
+
             CreateMap<UserForRegistrationDto, User>()
                 .ForMember(u => u.UserName, opt => opt.MapFrom(x => x.Email));
         }
